@@ -11,6 +11,12 @@
       "day": "Wednesday",
       "reminder": false,
       "id": 2
+    },
+    {
+      "text": "Teaching Frankie how to count",
+      "day": "Wednesday",
+      "reminder": false,
+      "id": 3
     }
   ]
 }
