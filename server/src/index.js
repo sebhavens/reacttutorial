@@ -22,9 +22,16 @@ app.use((req, res, next) => {
 
 app.listen(3000, () => {
     console.log('server is running on port 3000');
+    pool.query("DO IF EXISTS tasks"), (err, response) => {
+        if(err) {
+            return err
+        }
+        console.log(response);
+    }
     // pool.query("CREATE TABLE tasks(id SERIAL PRIMARY KEY, text TEXT, day TEXT, reminder BOOLEAN);"), (err, res) => {
     //     console.log(err, res);
     // }
+    //SELECT EXISTS(SELECT 1 FROM information_schema.tables WHERE table_schema = 'public' AND table_name = 'tasks');
 })
 
 //Get all tasks
