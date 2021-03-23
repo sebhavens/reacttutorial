@@ -21,7 +21,7 @@ const App = () => {
 
   //Fetch tasks
   const fetchTasks = async () => {
-    const res = await fetch('http://178.128.125.243:300/tasks')
+    const res = await fetch('http://178.128.125.243:3000/tasks')
     const data = await res.json()
 
     return data
