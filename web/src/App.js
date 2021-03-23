@@ -21,7 +21,7 @@ const App = () => {
 
   //Fetch tasks
   const fetchTasks = async () => {
-    const res = await fetch('http://178.128.125.243:3002/tasks')
+    const res = await fetch('http://178.128.125.243:300/tasks')
     const data = await res.json()
 
     return data
@@ -29,7 +29,7 @@ const App = () => {
 
   //Fetch task
   const fetchTask = async (id) => {
-    const res = await fetch(`http://178.128.125.243:3002/tasks/${id}`)
+    const res = await fetch(`http://178.128.125.243:3000/tasks/${id}`)
     const data = await res.json()
 
     return data
@@ -37,7 +37,7 @@ const App = () => {
 
   //Add Task
   const addTask = async (task) => {
-    const res = await fetch('http://178.128.125.243:3002/tasks',{
+    const res = await fetch('http://178.128.125.243:3000/tasks',{
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
@@ -55,7 +55,7 @@ const App = () => {
 
   //Delete Task
   const deleteTask = async (id) => {
-    await fetch(`http://178.128.125.243:3002/tasks/${id}`, {
+    await fetch(`http://178.128.125.243:3000/tasks/${id}`, {
       method: 'DELETE'
     })
     setTasks(tasks.filter((task) => task.id !== id))
@@ -68,7 +68,7 @@ const App = () => {
     const reminder = !taskToToggle.reminder
     const updReminderSend = JSON.stringify({ reminder })
 
-    const res = await fetch(`http://178.128.125.243:3002/tasks/${id}`, {
+    const res = await fetch(`http://178.128.125.243:3000/tasks/${id}`, {
       method: 'PUT',
       headers: {
         'Content-type': 'application/json'
