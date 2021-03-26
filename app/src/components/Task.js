@@ -37,6 +37,10 @@ const Task = ({ task, onDelete, onToggle }) => {
         }
     })
     
+    const deleteTask = (id) => {
+        onDelete(id)
+    }
+
     let taskStyle = 0
     if(task.reminder) {
         taskStyle = styles.taskReminder
@@ -50,7 +54,7 @@ const Task = ({ task, onDelete, onToggle }) => {
                 <Text style={styles.h3}>
                     {task.text}
                 </Text>
-                <Pressable onPress={() => onDelete(task.id)}><FontAwesomeIcon style={styles.icon} icon={ faTimes }></FontAwesomeIcon></Pressable>
+                <Pressable onPress={() => deleteTask(task.id)}><FontAwesomeIcon style={styles.icon} icon={ faTimes }></FontAwesomeIcon></Pressable>
             </View>
             <Text>{task.day}</Text>
         </Pressable>

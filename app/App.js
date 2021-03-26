@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react'
+import { SafeAreaView } from 'react-native-safe-area-context'
 import { Text, View, StyleSheet } from  'react-native';
 import Button from './src/components/Button'
 import Header from './src/components/Header'
@@ -10,7 +11,7 @@ import { setCustomText } from 'react-native-global-props'
 const App = () => {
   const customTextProps = {
     style: {
-      fontFamily: 'Poppins-Medium'
+      fontFamily: 'Poppins'
     }
   }
   setCustomText(customTextProps)
@@ -22,7 +23,7 @@ const App = () => {
       borderWidth: 1,
       marginLeft: 10,
       marginRight: 10,
-      marginTop: 30,
+      marginTop: 40,
       padding: 15,
       borderColor: "steelblue",
       marginBottom: 30
@@ -32,17 +33,6 @@ const App = () => {
   const [showAddTask, setShowAddTask] = useState(false)
   const [showTasks, setShowTasks] = useState(true)
   const [tasks, setTasks] = useState([])
-
-  let tasksCode;
-  if(showTasks) {
-    tasksCode = tasks.length > 0 ? ( 
-      <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}></Tasks>
-      ) : (
-        <Text>No Tasks</Text>
-      )
-  } else {
-    tasksCode = <Text></Text>
-  }
 
   useEffect(() => {
     const getTasks = async () => {
@@ -134,8 +124,20 @@ const App = () => {
     }
   }
 
+  let tasksCode;
+  if(showTasks) {
+    tasksCode = tasks.length > 0 ? ( 
+      <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}></Tasks>
+      ) : (
+        <Text>No Tasks</Text>
+      )
+  } else {
+    tasksCode = <Text></Text>
+  }
+
+
   return (
-    <View style={styles.view}>
+    <SafeAreaView style={styles.view}>
       <Header title="Task Tracker" onAdd={() => clickNewButton()} showAdd={showAddTask}></Header>
       {showAddTask && <AddTasks onAdd={addTask}></AddTasks> }
       {/* {tasks.length > 0 ? ( 
@@ -144,7 +146,7 @@ const App = () => {
             <Text>No Tasks</Text>
           )} */}
           {tasksCode}
-    </View>
+    </SafeAreaView>
   );
 }
 
